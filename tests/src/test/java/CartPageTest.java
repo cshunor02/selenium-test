@@ -33,9 +33,9 @@ public class CartPageTest extends BasePageTest {
         String outputDir = "src/images/";
         cartPage.downloadCartImages(outputDir);
 
-        File[] files = new File(outputDir).listFiles();
-        
-        Assert.assertNotNull(files);
-        Assert.assertEquals(files.length, 3);
+        File folder = new File(outputDir);
+        File[] imageFiles = folder.listFiles((d, name) -> name.toLowerCase().endsWith(".png"));
+
+        Assert.assertTrue(imageFiles.length == 3);
     }
 }

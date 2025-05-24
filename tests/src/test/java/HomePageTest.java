@@ -31,8 +31,7 @@ public class HomePageTest extends BasePageTest {
     // Hover test - 6 points
     @Test
     public void testHoverOverMenu() {
-        waitVisibiiltyAndFindElement(categoriesMenuLocator);
-        WebElement categoriesMenu = this.driver.findElement(categoriesMenuLocator);
+        WebElement categoriesMenu = waitVisibiiltyAndFindElement(categoriesMenuLocator);
         WebElement verticalMenu = this.driver.findElement(By.xpath("//div[@class='vertical-menu']"));
 
         Assert.assertFalse(verticalMenu.isDisplayed());
