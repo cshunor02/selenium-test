@@ -55,7 +55,7 @@ public class HomePageTest extends BasePageTest {
     // Send a form - 1 point
     @Test
     public void testSignUpToNewsLetter() {
-        By successLocator = By.xpath("//div[@class='hustle-success']");
+        By successLocator = By.xpath("//span[@class='hustle-icon-check']");
         WebElement successElement = this.driver.findElement(successLocator);
         Assert.assertFalse(successElement.isDisplayed());
 
