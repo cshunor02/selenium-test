@@ -31,3 +31,6 @@ services:
     ports:
       - "4444:4444"
       - "5900:5900"
+    volumes:
+      - ./uploadImage:/home/seluser/uploadImage
+    entrypoint: ["/bin/bash", "-c", "mkdir -p /home/seluser/uploadImage && exec /opt/bin/entry_point.sh"]
