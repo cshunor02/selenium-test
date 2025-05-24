@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HistoryTest extends BasePageTest {
     
@@ -18,15 +19,21 @@ public class HistoryTest extends BasePageTest {
 
     // History test (browser back button) - 4 points
     @Test
-    public void testHistory() {
+    public void testHistory() throws InterruptedException {
+        wait.until(ExpectedConditions.titleIs("Home of Free Amigurumi Crochet Patterns - StringyDingDing"));
         Assert.assertTrue(this.driver.getTitle().equals("Home of Free Amigurumi Crochet Patterns - StringyDingDing"));
-
+        
         this.driver.get("https://stringydingding.com/cart/");
-        waitVisibiiltyAndFindElement(By.tagName("body"));
+        wait.until(ExpectedConditions.titleIs("Cart - StringyDingDing"));
         Assert.assertTrue(this.driver.getTitle().equals("Cart - StringyDingDing"));
-
+        
+        this.driver.get("https://stringydingding.com/cart/");
+        wait.until(ExpectedConditions.titleIs("Cart - StringyDingDing"));
+        Assert.assertEquals(driver.getTitle(), "Cart - StringyDingDing");
+        
+        Thread.sleep(2000);
         this.driver.navigate().back();
-        waitVisibiiltyAndFindElement(By.tagName("body"));
+        wait.until(ExpectedConditions.titleIs("Home of Free Amigurumi Crochet Patterns - StringyDingDing"));
         Assert.assertTrue(this.driver.getTitle().equals("Home of Free Amigurumi Crochet Patterns - StringyDingDing"));
     }
 }
