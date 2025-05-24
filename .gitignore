@@ -1,0 +1,5 @@
+.gradle
+build
+.idea
+tests/src/images/*
+tests/bin
